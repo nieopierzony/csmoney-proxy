@@ -1,0 +1,13 @@
+[
+  {
+    "ip": "0.0.0.0",
+    "itemID": 9191,
+    "app": 730,
+    "fade": -1,
+    "overpay": {
+      "float": -1,
+      "pattern": -1,
+      "stickers": -1
+    }
+  }
+]
