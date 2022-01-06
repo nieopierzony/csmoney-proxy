@@ -9,7 +9,6 @@ def response(flow: http.HTTPFlow) -> None:
     user = find_user_by_ip(ip)
 
     current_time = time() * 1000
-    print(current_time)
     user_access_till = user["access_till"]
 
     # If client's IP is not in users list, show access error

@@ -48,16 +48,12 @@ def handle_skin_info(flow: http.HTTPFlow, user) -> None:
     raw_response = flow.response.content
     parsed_response = json.loads(raw_response)
 
-    print("handle_skin_info")
-
     try:
         user_items = user["items"]
 
         item_id = int(flow.request.query["id"])
         custom_item_settings =  next(x for x in user_items if x["id"] == item_id)
         custom_overpays = custom_item_settings["overpay"]
-
-        print(custom_overpays)
 
         price = parsed_response["price"]
 
@@ -68,6 +64,11 @@ def handle_skin_info(flow: http.HTTPFlow, user) -> None:
             if value > 0:
                 parsed_response["overpay"][key] = value
                 price += value
+
+        # If item has fade and custom settings have overwrites, change it
+        custom_fade = custom_item_settings["fade"]
+        if parsed_response["fade"] and custom_fade != -1:
+            parsed_response["fade"] = custom_fade
 
         parsed_response["price"] = price
 
