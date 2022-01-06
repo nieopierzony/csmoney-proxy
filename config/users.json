@@ -2,14 +2,15 @@
   {
     "id": 123,
     "ip": "172.24.0.1",
+    "access_till": 1641433222901,
     "items": [{
       "id": 19469317153,
       "app": 730,
       "fade": -1,
       "overpay": {
         "float": 10,
-        "pattern": -1,
-        "stickers": -1
+        "pattern": 500,
+        "stickers": 600
       }
     }]
   }
