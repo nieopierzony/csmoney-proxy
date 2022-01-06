@@ -67,7 +67,7 @@ def handle_skin_info(flow: http.HTTPFlow, user) -> None:
 
         # If item has fade and custom settings have overwrites, change it
         custom_fade = custom_item_settings["fade"]
-        if parsed_response["fade"] and custom_fade != -1:
+        if "fade" in parsed_response and custom_fade != -1:
             parsed_response["fade"] = custom_fade
 
         parsed_response["price"] = price
