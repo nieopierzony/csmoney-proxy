@@ -70,6 +70,13 @@ def handle_skin_info(flow: http.HTTPFlow, user) -> None:
         if "fade" in parsed_response and custom_fade != -1:
             parsed_response["fade"] = custom_fade
 
+        # If item has blue and custom settings have overwrites, change it
+        custom_blue = custom_item_settings["blue"]
+        if "blue" in parsed_response and custom_blue != -1:
+            parsed_response["blue"] = custom_blue
+            parsed_response["backSide"] = custom_blue
+            parsed_response["playSide"] = custom_blue
+
         parsed_response["price"] = price
 
         # Stringify new reponse and send it to the client

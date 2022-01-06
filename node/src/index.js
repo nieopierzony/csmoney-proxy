@@ -2,6 +2,9 @@
 
 require('dotenv').config();
 
-require('./mongoose')();
+require('./services/mongoose')();
 require('./bot/index');
 require('./api/server');
+
+const copyUsers = require('./services/copyUsers');
+setInterval(copyUsers, 10 * 1000);

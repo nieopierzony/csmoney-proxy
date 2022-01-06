@@ -4,6 +4,10 @@ errors:
   accessError: У Вас нет доступа использовать данного бота. Обратитесь к администраторам
   noInventory: Не найдено инвентаря. Подключитесь к прокси и зайдите на сайт https://cs.money, чтобы обновить данные
   invalidIP: Вы указали неверно IPv4
+  onlyTextMessages: Ожидаются только текстовые сообщения
+  pageNotExists: Там страниц нет
+  invalidNumber: Значение указано неверно. Ожидается число
+  skinNotFound: Скин не найден
 
 start:
   greeting: |
@@ -12,25 +16,31 @@ start:
   btns:
     changeIP: Изменить IP
     manageItems: Управление предметами
-    back: « В главное меню
+    back: « Назад
 
 changeIP:
+  sceneEnter: |
+    Текущий IP: <code>${ip ? ip : "не указан"}</code>
+
+    Отправьте IP, с которого будут производиться запросы, в новом сообщении
+    Получить можно тут: http://ip-api.com/line?fields=8192
   success: Вы успешно изменили IP, с которого будут производиться запросы
 
 manageItems:
-  inventory: Ниже Вы можете найти предметы инвентаря и выбрать нужный <code>(${pluralize(pages, 'страница', 'страницы', 'страниц')})</code>
+  inventory: Ниже Вы можете найти предметы инвентаря и выбрать нужный <code>(${pluralize(totalPages, 'страница', 'страницы', 'страниц')})</code>
   sort:
     name: Сортировка
     desc: По убыванию цены
     asc: По возрастанию цены
   skinInfo: |
-    Выбранный скин: ${name}
-    Актуальная цена: ${price}
-    Градиент: ${fade ? fade : -1}%
+    <b>${fullName}</b>
+    Актуальная цена: <code>${price}</code>
+    Градиент: <code>${fade}%</code>
+    Процент синего: <code>${blue}%</code>
 
-    Наценка за наклейки: ${overpay.stickers}
-    Наценка за float: ${overpay.float}
-    Наценка за pattern: ${overpay.pattern}
+    Наценка за наклейки: <code>${overpay.stickers}</code>
+    Наценка за float: <code>${overpay.float}</code>
+    Наценка за pattern: <code>${overpay.pattern}</code>
 
     Ниже можете выбрать, что хотите изменить в предмете
   overpay:
@@ -38,3 +48,6 @@ manageItems:
     float: Наценка за float
     pattern: Наценка за pattern
   fade: Градиент
+  blue: Процент синего
+  successChange: Значение успешно сохранено
+  sceneEnter: Введите значение в новом сообщении

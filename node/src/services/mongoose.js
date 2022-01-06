@@ -1,7 +1,7 @@
 'use strict';
 
 const { connect } = require('mongoose');
-const Logger = require('./logger');
+const Logger = require('../logger');
 
 const { DB_URL } = process.env;
 
