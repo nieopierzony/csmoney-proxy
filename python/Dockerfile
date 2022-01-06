@@ -9,4 +9,4 @@ COPY . .
 
 # Run the service on container startup.
 EXPOSE 8080
-CMD ["mitmproxy"]
+CMD ["mitmdump", "-s", "proxy.py"]
